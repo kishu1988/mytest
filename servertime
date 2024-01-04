@@ -1,0 +1,25 @@
+param (
+    [string]$location
+)
+
+function Get-ServerTime {
+    if ($location -eq "onprem") {
+        # Replace this with the logic to get the on-prem server time
+        $serverTime = Get-Date
+    }
+    elseif ($location -eq "oncloud") {
+        # Replace this with the logic to get the cloud server time
+        $serverTime = Invoke-RestMethod -Uri "https://api.example.com/getservertime"
+    }
+    else {
+        Write-Host "Invalid location parameter. Please use 'onprem' or 'oncloud'."
+        return
+    }
+
+    Write-Host "Server time on $location: $serverTime"
+}
+
+# Call the function to get the server time based on the provided location parameter
+Get-ServerTime -location $location
+
+
